@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Dislike Counter for YouTube",
+  "version": "1.1.0",
+  "description": "See the dislike count on every YouTube video and Short again. No tracking, no ads, no account needed.",
+  "icons": {
+    "48": "icon.svg",
+    "96": "icon.svg"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{f1a0fd19-9647-4f1c-9fc8-b5cfb177d92c}",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": [
+          "browsingActivity"
+        ]
+      }
+    },
+    "gecko_android": {
+      "strict_min_version": "142.0"
+    }
+  },
+  "host_permissions": [
+    "https://returnyoutubedislikeapi.com/*"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://m.youtube.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
